@@ -10,6 +10,7 @@ The Myers Briggs Type Indicator (MBTI) is a personality type system that divides
 - Intuition (N) – Sensing (S)
 - Thinking (T) – Feeling (F)
 - Judging (J) – Perceiving (P)
+
 The purpose of the MTBI personality inventory is to make the theory of psychological types described by C. G. Jung understandable and useful in people's lives. The essence of the theory is that much seemingly random variation in the behavior is actually quite orderly and consistent, being due to basic differences in the ways individuals prefer to use their perception and judgment.
 
 "Perception involves all the ways of becoming aware of things, people, happenings, or ideas. Judgment involves all the ways of coming to conclusions about what has been perceived. If people differ systematically in what they perceive and in how they reach conclusions, then it is only reasonable for them to differ correspondingly in their interests, reactions, values, motivations, and skills."
