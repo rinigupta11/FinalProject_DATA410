@@ -26,10 +26,26 @@ The Myers Briggs Type Indicator (MBTI) personality type dataset includes informa
 - A section of each of the last 50 things they have posted (Each entry separated by "|||" (3 pipe characters))
 
 ## Description of the Methods
-Background on classification:
+In machine learning, classification is the process of categorizing a given set of data into classes. It can be performed on both structured or unstructured data, and it belongs to the supervised learning category. There are many applications in classification in many domains such as in credit approval, medical diagnosis, target marketing, speech recognition, face detection, handwriting recognition, document classification, etc.
 
+In a more technical definition, classification is the process of predicting the class of given data points. Classes are sometimes called as targets/labels or categories. Classification predictive modeling is the task of approximating a mapping function (f) from input variables (X) to discrete output variables (y). The classification predictive modeling is the task of approximating the mapping function from input variables to discrete output variables. The main goal is to identify which class/category the new data will fall into.
 
-rini
+There are two types of learners in classification as lazy learners and eager learners.
+
+1. Lazy learners
+
+Lazy learners simply store the training data and wait until a testing data appear. When it does, classification is conducted based on the most related data in the stored training data. Compared to eager learners, lazy learners have less training time but more time in predicting.
+
+Ex. k-nearest neighbor, Case-based reasoning
+
+2. Eager learners
+
+Eager learners construct a classification model based on the given training data before receiving data for classification. It must be able to commit to a single hypothesis that covers the entire instance space. Due to the model construction, eager learners take a long time for train and less time to predict.
+
+In machine learning, classification is a supervised learning concept which basically categorizes a set of data into classes. It can be either a binary classification problem or a multi-class problem too. Decision trees, Naives Bayes, Artificial Neural Networks, k-Nearest Neighbor (KNN), etc. are all familiar examples of classification. After training the model the most important part is to evaluate the classifier to verify its applicability. This may entail employing the holdout, cross-validation, and/or precision & recall methods.
+
+Classification & MBTI Dataset:
+Rini
 
 ### Preprocessing Steps
 The dataset that we are working with contains primarily textual data. As a result, there is a decent amount of preprocessing work to be done in order to draw meaningful information from the textual data. There are several libraries in Python that deal with textual preprocessing -- namely, NLTK, Gensim, and spaCy. Regardless of which library we ultimately choose to use, there are several standard steps that need to be taken to transform the text data into something that can go into a machine learning model. At this point, some experimentation can be done with lemmatization and stemming. Next, we will remove url links, punctuation, and excess white space in the social media posts. Then, we will make all of the letters lowercase to standardize the data. Finally, we will gather a list of common English stopwords (commonly used words that do not contribute to overall meaning) and remove them from the text data to eliminate them from influencing classification as well as lower the number of words per observation. 
@@ -65,6 +81,10 @@ rini/kimya
 
 ## References 
 https://www.myersbriggs.org/my-mbti-personality-type/take-the-mbti-instrument/ 
+
+https://towardsdatascience.com/machine-learning-classifiers-a5cc4e1b0623
+
+https://www.edureka.co/blog/classification-in-machine-learning/
 
 Bachman, E. (2020, March 27). Light GBM vs XGBOOST: Which algorithm takes the Crown. Analytics Vidhya. Retrieved March 6, 2022, from https://www.analyticsvidhya.com/blog/2017/06/which-algorithm-takes-the-crown-light-gbm-vs-xgboost/
 
