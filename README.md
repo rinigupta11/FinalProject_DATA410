@@ -26,6 +26,9 @@ The Myers Briggs Type Indicator (MBTI) personality type dataset includes informa
 - A section of each of the last 50 things they have posted (Each entry separated by "|||" (3 pipe characters))
 
 ## Description of the Methods
+Background on classification:
+
+
 rini
 
 ### Preprocessing Steps
@@ -64,5 +67,9 @@ rini/kimya
 https://www.myersbriggs.org/my-mbti-personality-type/take-the-mbti-instrument/ 
 
 Bachman, E. (2020, March 27). Light GBM vs XGBOOST: Which algorithm takes the Crown. Analytics Vidhya. Retrieved March 6, 2022, from https://www.analyticsvidhya.com/blog/2017/06/which-algorithm-takes-the-crown-light-gbm-vs-xgboost/
+
+https://www.ibm.com/docs/it/spss-modeler/SaaS?topic=models-how-svm-works
+
+https://towardsdatascience.com/bert-explained-state-of-the-art-language-model-for-nlp-f8b21a9b6270
 
 Ke, Guolin; Meng, Qi; Finley, Thomas; Wang, Taifeng; Chen, Wei; Ma, Weidong; Ye, Qiwei; Liu, Tie-Yan (2017). "LightGBM: A Highly Efficient Gradient Boosting Decision Tree". Advances in Neural Information Processing Systems.
