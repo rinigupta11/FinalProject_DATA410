@@ -66,9 +66,13 @@ This section will also be filled in for the final project with concluding though
 
 ## References 
 Asiri, S. (2018, June 11). Machine learning classifiers. Medium. Retrieved April 14, 2022, from https://towardsdatascience.com/machine-learning-classifiers-a5cc4e1b0623 
+
 Bachman, E. (2020, March 27). Light GBM vs XGBOOST: Which algorithm takes the Crown. Analytics Vidhya. Retrieved April 14, 2022, from https://www.analyticsvidhya.com/blog/2017/06/which-algorithm-takes-the-crown-light-gbm-vs-xgboost/ 
+
 Horev, R. (2018, November 17). Bert explained: State of the art language model for NLP. Medium. Retrieved April 14, 2022, from https://towardsdatascience.com/bert-explained-state-of-the-art-language-model-for-nlp-f8b21a9b6270 
 How SVM Works. How SVM works. (2021, August 17). Retrieved April 14, 2022, from https://www.ibm.com/docs/it/spss-modeler/SaaS?topic=models-how-svm-works 
+
 Ke, Guolin; Meng, Qi; Finley, Thomas; Wang, Taifeng; Chen, Wei; Ma, Weidong; Ye, Qiwei; Liu, Tie-Yan (2017). "LightGBM: A Highly Efficient Gradient Boosting Decision Tree". Advances in Neural Information Processing Systems.
 Take the MBTI Instrument. The Myers & Briggs Foundation - take the MBTI® Instrument. (n.d.). Retrieved April 14, 2022, from https://www.myersbriggs.org/my-mbti-personality-type/take-the-mbti-instrument/ 
+
 Waseem, M. (2022, March 28). Classification in machine learning: Classification algorithms. Edureka. Retrieved April 14, 2022, from https://www.edureka.co/blog/classification-in-machine-learning/ 
