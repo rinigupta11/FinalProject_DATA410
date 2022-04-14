@@ -5,7 +5,7 @@
 Link to the dataset: https://www.kaggle.com/datasets/datasnaek/mbti-type 
 
 ## Introduction
-The myers Briggs Type Indicator (MTBI) is a personality type system that divides everyone into 16 personality types across 4 axis: 
+The Myers Briggs Type Indicator (MBTI) is a personality type system that divides everyone into 16 personality types across 4 axis: 
 - Introversion (I) – Extroversion (E)
 - Intuition (N) – Sensing (S)
 - Thinking (T) – Feeling (F)
@@ -18,9 +18,14 @@ In developing the Myers-Briggs Type Indicator [instrument], the aim of Isabel Br
 Recently, its use/validity has come into question because of unreliability in experiments surrounding it, among other reasons. But it is still clung to as being a very useful tool in a lot of areas, and the purpose of this dataset is to help see if any patterns can be detected in specific types and their style of writing, which overall explores the validity of the test in analysing, predicting or categorising behaviour.
 
 ## Description of Data
-The (MBTI) Myer-Briggs Personality Type Dataset includes information on people's MTBI type and content written by them
+The Myers Briggs Type Indicator (MBTI) personality type dataset includes information on people's MTBI type and content written by them. Moreover, this dataset contains over 8600 rows of data, on each row is a person’s:
+
+- Type (This persons 4 letter MBTI code/type)
+- A section of each of the last 50 things they have posted (Each entry separated by "|||" (3 pipe characters))
+
 ## Description of the Methods
 rini
+
 ### Preprocessing Steps
 The dataset that we are working with contains primarily textual data. As a result, there is a decent amount of preprocessing work to be done in order to draw meaningful information from the textual data. There are several libraries in Python that deal with textual preprocessing -- namely, NLTK, Gensim, and spaCy. Regardless of which library we ultimately choose to use, there are several standard steps that need to be taken to transform the text data into something that can go into a machine learning model. At this point, some experimentation can be done with lemmatization and stemming. Next, we will remove url links, punctuation, and excess white space in the social media posts. Then, we will make all of the letters lowercase to standardize the data. Finally, we will gather a list of common English stopwords (commonly used words that do not contribute to overall meaning) and remove them from the text data to eliminate them from influencing classification as well as lower the number of words per observation. 
 
