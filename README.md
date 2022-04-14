@@ -74,10 +74,11 @@ These methods are all supervised learning methods. We are able to use a supervis
 More information will be written here for the final submission, but our plan is to use the score function of these classifiers and compare scores across the different models. The model with the highest score will be considered the best model for personality prediction. It will likely be difficult to run many cross validations given the size of the dataset, so we do not plan on performing cross validation at the present moment. 
 
 ## Results/Inferences
-rini
+This section will be filled in for the final project using the score results and comparing the different methodologies to understand why some may outperform others. 
 
 ## Concluding Thoughts and Future Work 
-rini/kimya
+This section will also be filled in for the final project with concluding thoughts and ideas for how this research should be expanded in the future to better understand classification tasks using text data. 
+
 
 ## References 
 https://www.myersbriggs.org/my-mbti-personality-type/take-the-mbti-instrument/ 
