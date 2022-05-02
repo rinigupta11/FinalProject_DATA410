@@ -94,7 +94,7 @@ from sklearn.model_selection import train_test_split
 posts_train, posts_test, IE_train, IE_test, NS_train, NS_test, TF_train, TF_test, JP_train, JP_test = train_test_split(features, IE,NS,TF,JP, test_size = 0.20)
 ```
 ## Pipeline
-![Untitled drawing](https://user-images.githubusercontent.com/76021844/163297864-ca3c80a7-e2f2-45a4-ae8e-458b9ea62016.png)
+<img width="919" alt="Screen Shot 2022-05-02 at 10 41 46 AM" src="https://user-images.githubusercontent.com/76021844/166253756-a2b8a401-d8f9-42be-bb1b-01b6f600616b.png">
 
 ### Machine Learning Methodology 
 
@@ -282,7 +282,6 @@ model.fit(train_padded, one_hot_labels, epochs =30, verbose = 1,
 The code above is taken from Uzosoy and essentially initializes various layers within the network. There is a bidirectional layer, a typical dropout layer, another bidirectional layer, and then a dense layer followed by the final dropout layer. The Keras library and TensorFlow library was used to create this model and the Adam optimizer was used as well as categorical cross entropy for the loss function. 
 
 These methods are all supervised learning methods. We are able to use a supervised approach since we have a labeled dataset to train the models on. 
-
 
 
 ## Validation Procedure 
