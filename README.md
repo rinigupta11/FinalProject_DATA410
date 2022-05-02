@@ -27,8 +27,7 @@ Here is a visual display of the distribution of personality types in the dataset
 ![image](https://user-images.githubusercontent.com/76021844/163433518-6e1cd1a0-c460-440b-9743-af4d0a45df71.png)
 
 This distribution is acceptable given that there are some personality types that are more common among people than others, so we do not expect a uniform distribution.
-```
-```
+
 
 ## Description of the Methods
 We will be utilizing algorithms that center around classification. Given a set of observations and labels to train on, classification entails being able to categorize the data points. Since classification algorithms involve a labeled dataset, classification is a type of supervised learning. The two main types of classification algorithms are lazy learners and eager learners. Lazy learners store the training data in memory and classify the testing data point based on related stored train data. Training does not take as long with a lazy learner, but prediction can be slower. In contrast, an eager learner trains on the train data to cover all possible cases and then makes predictions after. Training takes a long time with this method, but prediction is much faster. There is no clear-cut best classification algorithm and performance changes depending on the dataset. As a result, we will experiment with a variety of classification algorithms. 
