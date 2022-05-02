@@ -131,7 +131,7 @@ JP_model_train=JP_model.score(posts_train,JP_train)
 JP_model_test=JP_model.score(posts_test,JP_test)
 ```
 
-In simple terms, boosting takes weak learners and makes them into strong learners (Singh 2018). The trees that are fit are on a modified version of the original data. Each tree tries to improve upon the weights placed on the previous tree. Gradient boosting is a greedy algorithm that gradually trains many models. Friedman's extreme gradient boosting was developed in 2001 with regularization mechanisms to avoid overfitting (Maklin 2020). Like gradient boosting, extreme gradient boosting is a tree-based algorithm. One of the main strengths of extreme gradient boosting is the speed at which it runs, particularly in comparison to a deep neural network. 
+In simple terms, boosting takes weak learners and makes them into strong learners (Singh 2018) through ensemble learning. The trees that are fit are on a modified version of the original data. Each tree tries to improve upon the weights placed on the previous tree. Gradient boosting is a greedy algorithm that gradually trains many models. Specifically, the loss gradient is minimized while the model is fit to the dataset. This process is somewhat similar to a neural network. Friedman's extreme gradient boosting was developed in 2001 with regularization mechanisms to avoid overfitting (Maklin 2020). Like gradient boosting, extreme gradient boosting is a tree-based algorithm. One of the main strengths of extreme gradient boosting is the speed at which it runs, particularly in comparison to a deep neural network. XGBoost incorporates proportional shrinking of leaf nodes, penalization of trees, and embedded feature selection.
 ```
 from xgboost import XGBClassifier
 
