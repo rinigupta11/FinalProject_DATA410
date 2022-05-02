@@ -378,6 +378,8 @@ Asiri, S. (2018, June 11). Machine learning classifiers. Medium. Retrieved April
 
 Bachman, E. (2020, March 27). Light GBM vs XGBOOST: Which algorithm takes the Crown. Analytics Vidhya. Retrieved April 14, 2022, from https://www.analyticsvidhya.com/blog/2017/06/which-algorithm-takes-the-crown-light-gbm-vs-xgboost/ 
 
+CatBoost: CatBoost categorical features. Analytics Vidhya. (2020, June 7). Retrieved May 2, 2022, from https://www.analyticsvidhya.com/blog/2017/08/catboost-automated-categorical-data/ 
+
 Horev, R. (2018, November 17). Bert explained: State of the art language model for NLP. Medium. Retrieved April 14, 2022, from https://towardsdatascience.com/bert-explained-state-of-the-art-language-model-for-nlp-f8b21a9b6270 
 How SVM Works. How SVM works. (2021, August 17). Retrieved April 14, 2022, from https://www.ibm.com/docs/it/spss-modeler/SaaS?topic=models-how-svm-works 
 
