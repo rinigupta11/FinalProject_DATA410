@@ -438,10 +438,9 @@ Epoch 17/20
 
 Cross-validation would be a useful exercise to ensure there is no one specific model that outperforms the others. This area was a computational efficiency problem when I was conducting my analysis, but cross-validation is a very important way to understand the results of a particular model if a longer timeframe were available.
 
-Furthermore, experimenting with the architecture of the neural networks in this analysis as well as their parameters (changing batch size, max length, etc) to see if the performance of the neural networks improves. It was an odd finding that the results of the neural nets were so much worse than the other algorithms. I imagine with further analysis, the score of the neural networks should increase. Additionally, one could try training for a greater number of epochs. 
+Furthermore, experimenting with the architecture of the neural networks in this analysis as well as their parameters (changing batch size, max length, etc) to see if the performance of the neural networks improves. It was an odd finding that the results of the neural nets were so much worse than the other algorithms. I imagine with further analysis, the score of the neural networks should increase. Additionally, one could try training for a greater number of epochs to see if there is any improvement.
 
-
-
+Finally, there could be additional experimentation with the kernel function for SVM and the hyperparameters for Random Forest to see if there is any improvement in performance. 
 
 ## References 
 Asiri, S. (2018, June 11). Machine learning classifiers. Medium. Retrieved April 14, 2022, from https://towardsdatascience.com/machine-learning-classifiers-a5cc4e1b0623 
