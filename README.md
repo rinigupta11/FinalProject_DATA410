@@ -93,7 +93,7 @@ from sklearn.model_selection import train_test_split
 posts_train, posts_test, IE_train, IE_test, NS_train, NS_test, TF_train, TF_test, JP_train, JP_test = train_test_split(features, IE,NS,TF,JP, test_size = 0.20)
 ```
 ## Pipeline
-<img width="919" alt="Screen Shot 2022-05-02 at 10 41 46 AM" src="https://user-images.githubusercontent.com/76021844/166253756-a2b8a401-d8f9-42be-bb1b-01b6f600616b.png">
+<img width="937" alt="Screen Shot 2022-05-04 at 10 41 32 AM" src="https://user-images.githubusercontent.com/76021844/166705966-44dcba5d-b551-4583-833b-5defc30f3890.png">
 
 ### Machine Learning Methodology 
 
@@ -278,7 +278,34 @@ model.fit(train_padded, one_hot_labels, epochs =30, verbose = 1,
           validation_data = (val_padded, val_labels), callbacks = [tf.keras.callbacks.EarlyStopping(patience = 3)])
 ```
 
-The code above is taken from Uzosoy and essentially initializes various layers within the network. There is a bidirectional layer, a typical dropout layer, another bidirectional layer, and then a dense layer followed by the final dropout layer. The Keras library and TensorFlow library was used to create this model and the Adam optimizer was used as well as categorical cross entropy for the loss function. 
+The code above is taken from Uzosoy and essentially initializes various layers within the network. The token position embedding helps the model understand how a token at one position attends to another token elsewhere. There is a bidirectional layer, a typical dropout layer, another bidirectional layer, and then a dense layer followed by the final dropout layer. The Keras library and TensorFlow library was used to create this model and the Adam optimizer was used as well as categorical cross entropy for the loss function. 
+
+TowardsDataScience calls BERT the "state of the art" model for natural language processing. BERT utilizes the bidirectional training of a widely-used attention model, Transformer. Given the complexity of comprehending language, bidirectional training has led to meaningful improvements in the textual analysis. As mentioned previously, BERT is a deep learning model. BERT utilizes the encoding aspect of the Transformer model and that encoder reads text all at once (perhaps non-directional is a better term than bidirectional). BERT can be used for a wide variety of NLP tasks such as classification, question answering, and named-entity recognition. The code below is again modified from Uzsoy to see how BERT performs with this dataset. 
+```
+maxlen = 500
+
+train_input_ids = [tokenizer.encode(str(i), max_length = maxlen , pad_to_max_length = True) for i in train.cleaned_text.values]
+val_input_ids = [tokenizer.encode(str(i), max_length = maxlen , pad_to_max_length = True) for i in val.cleaned_text.values]
+
+def create_model(): 
+    input_word_ids = tf.keras.layers.Input(shape=(maxlen,), dtype=tf.int32,
+                                           name="input_word_ids")
+    bert_layer = transformers.TFBertModel.from_pretrained('bert-large-uncased')
+    bert_outputs = bert_layer(input_word_ids)[0]
+    pred = tf.keras.layers.Dense(16, activation='softmax')(bert_outputs[:,0,:])
+    
+    model = tf.keras.models.Model(inputs=input_word_ids, outputs=pred)
+    loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
+    model.compile(loss='categorical_crossentropy', optimizer=tf.keras.optimizers.Adam(
+    learning_rate=0.00001), metrics=['accuracy'])
+    return model
+tf.keras.backend.set_floatx('float16')
+model = create_model()
+model.fit(np.array(train_input_ids), one_hot_labels,validation_data = (np.array(val_input_ids), val_labels),
+          verbose = 1, epochs = 20, batch_size = 64,  callbacks = [tf.keras.callbacks.EarlyStopping(patience = 5)])
+```
+
+I ran into many difficulties getting BERT to work because of a resources exhausted error. I finally discovered I had to decrease the maximum length of sequences and increase the batch size in order to get my model to run. 
 
 These methods are all supervised learning methods. We are able to use a supervised approach since we have a labeled dataset to train the models on. 
 
@@ -299,7 +326,7 @@ SVC Scores: [0.7786743515850144, 0.8639769452449567, 0.7631123919308357, 0.67435
 
 Cat Scores: [0.7861671469740634, 0.8662824207492795, 0.7561959654178675, 0.6795389048991355]
 
-As you can see, the various models were comparable in performance with no clear winner. The gradient boosting models did appear to consistently outperform the random forest scores, especially for the last two classifications. There is, however, one clear loser. That is the neural network. I created encodings for the various 16 personality types in order to work with the neural network more efficiently and the final score after 30 epochs was 0.2636 accuracy. This is significantly worse than the other models are likely indicates that the architecture of the model needs to be altered. Furthermore, running more epochs might be worthwhile to see if the score can increase further. 
+As you can see, the various models were comparable in performance with no clear winner. The gradient boosting models did appear to consistently outperform the random forest scores, especially for the last two classifications. There is, however, one clear loser. That is the neural network. I created encodings for the various 16 personality types in order to work with the neural network more efficiently and the final score after 30 epochs was 0.2636 accuracy. This is significantly worse than the other models are likely indicates that the architecture of the model needs to be altered. Furthermore, running more epochs might be worthwhile to see if the score can increase further. BERT actually performed worse than the standard neural net architecture with a final accuracy of only .19. 
 
 Here is the full output of the neural network training:
 
@@ -366,9 +393,49 @@ Epoch 30/30
 <keras.callbacks.History at 0x7f95ac75f8d0>
 
 
+Here is the full output of BERT's training:
+Epoch 1/20
+WARNING:tensorflow:Gradients do not exist for variables ['tf_bert_model_2/bert/pooler/dense/kernel:0', 'tf_bert_model_2/bert/pooler/dense/bias:0'] when minimizing the loss. If you're using `model.compile()`, did you forget to provide a `loss`argument?
+WARNING:tensorflow:Gradients do not exist for variables ['tf_bert_model_2/bert/pooler/dense/kernel:0', 'tf_bert_model_2/bert/pooler/dense/bias:0'] when minimizing the loss. If you're using `model.compile()`, did you forget to provide a `loss`argument?
+WARNING:tensorflow:Gradients do not exist for variables ['tf_bert_model_2/bert/pooler/dense/kernel:0', 'tf_bert_model_2/bert/pooler/dense/bias:0'] when minimizing the loss. If you're using `model.compile()`, did you forget to provide a `loss`argument?
+WARNING:tensorflow:Gradients do not exist for variables ['tf_bert_model_2/bert/pooler/dense/kernel:0', 'tf_bert_model_2/bert/pooler/dense/bias:0'] when minimizing the loss. If you're using `model.compile()`, did you forget to provide a `loss`argument?
+77/77 [==============================] - 400s 3s/step - loss: 2.8008 - accuracy: 0.1666 - val_loss: 8.1328 - val_accuracy: 0.1691
+Epoch 2/20
+77/77 [==============================] - 81s 1s/step - loss: 5.9375 - accuracy: 0.1356 - val_loss: 3.1836 - val_accuracy: 0.1537
+Epoch 3/20
+77/77 [==============================] - 81s 1s/step - loss: 2.5527 - accuracy: 0.1693 - val_loss: 2.3633 - val_accuracy: 0.2003
+Epoch 4/20
+77/77 [==============================] - 82s 1s/step - loss: 2.4082 - accuracy: 0.1793 - val_loss: 2.3965 - val_accuracy: 0.1691
+Epoch 5/20
+77/77 [==============================] - 82s 1s/step - loss: 2.3770 - accuracy: 0.1812 - val_loss: 2.3574 - val_accuracy: 0.2003
+Epoch 6/20
+77/77 [==============================] - 82s 1s/step - loss: 2.3535 - accuracy: 0.1781 - val_loss: 2.3516 - val_accuracy: 0.2003
+Epoch 7/20
+77/77 [==============================] - 82s 1s/step - loss: 2.3516 - accuracy: 0.1869 - val_loss: 2.3574 - val_accuracy: 0.2003
+Epoch 8/20
+77/77 [==============================] - 82s 1s/step - loss: 2.3496 - accuracy: 0.1787 - val_loss: 2.3125 - val_accuracy: 0.2003
+Epoch 9/20
+77/77 [==============================] - 82s 1s/step - loss: 2.3301 - accuracy: 0.1877 - val_loss: 2.3203 - val_accuracy: 0.2003
+Epoch 10/20
+77/77 [==============================] - 82s 1s/step - loss: 2.3340 - accuracy: 0.1863 - val_loss: 2.2988 - val_accuracy: 0.1691
+Epoch 11/20
+77/77 [==============================] - 82s 1s/step - loss: 2.3223 - accuracy: 0.1844 - val_loss: 2.3301 - val_accuracy: 0.1691
+Epoch 12/20
+77/77 [==============================] - 82s 1s/step - loss: 2.3223 - accuracy: 0.1959 - val_loss: 2.2871 - val_accuracy: 0.2003
+Epoch 13/20
+77/77 [==============================] - 82s 1s/step - loss: 2.3262 - accuracy: 0.1812 - val_loss: 2.3105 - val_accuracy: 0.2003
+Epoch 14/20
+77/77 [==============================] - 82s 1s/step - loss: 2.3223 - accuracy: 0.1926 - val_loss: 2.2969 - val_accuracy: 0.2003
+Epoch 15/20
+77/77 [==============================] - 82s 1s/step - loss: 2.3203 - accuracy: 0.1814 - val_loss: 2.2930 - val_accuracy: 0.2003
+Epoch 16/20
+77/77 [==============================] - 82s 1s/step - loss: 2.3105 - accuracy: 0.1969 - val_loss: 2.2949 - val_accuracy: 0.2003
+Epoch 17/20
+77/77 [==============================] - 82s 1s/step - loss: 2.3223 - accuracy: 0.1951 - val_loss: 2.3066 - val_accuracy: 0.1537
+<keras.callbacks.History at 0x7f18adf08050>
+
 ## Concluding Thoughts and Future Work 
 
-TowardsDataScience calls BERT the "state of the art" model for natural language processing. BERT utilizes the bidirectional training of a widely-used attention model, Transformer. Given the complexity of comprehending language, bidirectional training has led to meaningful improvements in the textual analysis. As mentioned previously, BERT is a deep learning model. BERT utilizes the encoding aspect of the Transformer model and that encoder reads text all at once (perhaps non-directional is a better term than bidirectional). BERT can be used for a wide variety of NLP tasks such as classification, question answering, and named-entity recognition. My original plan was to test out BERT on this NLP classification task; however, I did not have the computational ability to do so as I repeatedly received resources exhausted errors. I hypothesize that BERT would outperform the neural network that I did use and think that incorporating BERT into this analysis must be a key portion of future work. 
 
 Furthermore, cross-validation would be a useful exercise to ensure there is no one specific model that outperforms the others. This area was another computational efficiency problem when I was conducting my analysis, but cross-validation is a very important way to understand the results of a particular model. 
 
