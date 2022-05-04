@@ -436,8 +436,11 @@ Epoch 17/20
 
 ## Concluding Thoughts and Future Work 
 
+Cross-validation would be a useful exercise to ensure there is no one specific model that outperforms the others. This area was a computational efficiency problem when I was conducting my analysis, but cross-validation is a very important way to understand the results of a particular model if a longer timeframe were available.
 
-Furthermore, cross-validation would be a useful exercise to ensure there is no one specific model that outperforms the others. This area was another computational efficiency problem when I was conducting my analysis, but cross-validation is a very important way to understand the results of a particular model. 
+Furthermore, experimenting with the architecture of the neural networks in this analysis as well as their parameters (changing batch size, max length, etc) to see if the performance of the neural networks improves. It was an odd finding that the results of the neural nets were so much worse than the other algorithms. I imagine with further analysis, the score of the neural networks should increase. Additionally, one could try training for a greater number of epochs. 
+
+
 
 
 ## References 
